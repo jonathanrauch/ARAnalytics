@@ -5,7 +5,7 @@
 static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 
 @interface MixpanelProvider()
-    @property (nonatomic, readonly) Mixpanel *mixpanel;
+
 @end
 
 @implementation MixpanelProvider
