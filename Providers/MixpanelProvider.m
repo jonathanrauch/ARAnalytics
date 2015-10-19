@@ -1,6 +1,5 @@
 #import "MixpanelProvider.h"
 #import "ARAnalyticsProviders.h"
-#import "Mixpanel.h"
 
 static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 
@@ -59,18 +58,18 @@ static NSString * const kMixpanelTimingPropertyKey = @"$duration";
 }
 
 - (void)logTimingEvent:(NSString *)event withInterval:(NSNumber *)interval properties:(NSDictionary *)properties {
-    
+
     if (properties[kMixpanelTimingPropertyKey]) {
         NSString *warning = [NSString stringWithFormat:@"Properties for timing event '%@' contains a key that clashes with the key used for reporting the time: %@", event, kMixpanelTimingPropertyKey];
         NSLog(@"%@", warning);
         NSAssert(properties[kMixpanelTimingPropertyKey], @"%@", warning);
     }
-    
+
     NSMutableDictionary *mutableProperties = [NSMutableDictionary dictionaryWithDictionary:properties];
     if (interval) {
         mutableProperties[kMixpanelTimingPropertyKey] = interval;
     }
-    
+
     [self event:event withProperties:mutableProperties];
 }
 

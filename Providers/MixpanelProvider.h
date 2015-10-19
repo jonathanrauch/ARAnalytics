@@ -1,4 +1,5 @@
 #import "ARAnalyticalProvider.h"
+#import "Mixpanel.h"
 
 @interface MixpanelProvider : ARAnalyticalProvider
 
